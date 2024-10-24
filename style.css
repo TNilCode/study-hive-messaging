@@ -1,0 +1,141 @@
+/* General reset and theme setup */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #1e1e1e;
+    --text-color: #f0f4e1;
+
+    --sent-bg-color: #a0710c;
+    --sent-text-color: #d8d8d8;
+
+    --received-bg-color: #afafaf;
+    --received-text-color: #131313;
+}
+
+html, body, #container {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+}
+
+#side-nav {
+    width: 20%;
+    background-color: #2a2a2a;
+    color: var(--text-color);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#msg-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.message {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+}
+
+.message.sent {
+    align-self: flex-end;
+}
+
+.message.received {
+    align-self: flex-start;
+}
+
+.message-bubble {
+    padding: 10px;
+    border-radius: 15px;
+    word-wrap: break-word;
+    position: relative;
+    display: inline-block;
+}
+
+/* Border radius adjustments for sent messages */
+.message.sent .top {
+    border-top-right-radius: 5px;
+}
+
+.message.sent .bottom {
+    border-bottom-right-radius: 5px;
+}
+
+/* Border radius adjustments for received messages */
+.message.received .top {
+    border-top-left-radius: 5px;
+}
+
+.message.received .bottom {
+    border-bottom-left-radius: 5px;
+}
+
+.sent .message-bubble {
+    background-color: var(--sent-bg-color);
+    color: var(--sent-text-color);
+}
+
+.received .message-bubble {
+    background-color: var(--received-bg-color);
+    color: var(--received-text-color);
+}
+
+/* Timestamp styling and alignment */
+.timestamp {
+    font-size: 0.8em;
+    color: inherit;
+    margin-top: 5px;
+    margin-left: 10px;
+    display: none; /* Initially hidden, shown on hover */
+}
+
+.message-bubble:hover .timestamp {
+    display: inline-block;
+}
+
+/* Input field styling */
+#message-field {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#message-input {
+    flex: 1;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+}
+
+#send-btn {
+    padding: 15px;
+    border: none;
+    background-color: var(--sent-bg-color);
+    color: var(--sent-text-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#send-btn:hover {
+    background-color: #805a07;
+}
