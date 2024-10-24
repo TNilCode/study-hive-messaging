@@ -9,18 +9,27 @@
 <body>
     <div id="container">
         <!-- Sidebar for servers and channels -->
-        <nav id="side-nav">
-            <div id="server-nav">Servers</div>
-            <div id="channel-nav">Channels</div>
+        <nav id="server-nav">
         </nav>
 
         <!-- Main messaging area -->
         <article id="msg-container">
-            <div id="messages"></div>
+            <div class="title-container">
+                <h1 class="server-name">Jelq Club</h1>
+            </div>
+
+            <div id="messages">
+
+            </div>
+
+            <!-- Image chip container -->
+            <div id="image-chip-container"></div>
 
             <div id="message-field">
-                <input type="text" id="message-input" placeholder="Type your message..." />
+                <input type="text" id="message-input" maxlength="5000" placeholder="Type your message..." />
+                <button id="image-btn">📷</button>
                 <button id="send-btn">Send</button>
+                <input type="file" id="image-input" accept="image/*" style="display: none;" />
             </div>
         </article>
     </div>

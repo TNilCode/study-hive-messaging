@@ -1,4 +1,3 @@
-/* General reset and theme setup */
 * {
     padding: 0;
     margin: 0;
@@ -6,14 +5,14 @@
 }
 
 :root {
-    --bg-color: #1e1e1e;
-    --text-color: #f0f4e1;
-
-    --sent-bg-color: #a0710c;
-    --sent-text-color: #d8d8d8;
-
-    --received-bg-color: #afafaf;
-    --received-text-color: #131313;
+    --bg-color: #36393f;
+    --text-color: #ffffff;
+    --input-bg-color: #40444b;
+    --send-btn-color: #907915;
+    --profile-picture-size: 40px;
+    --username-color: #8e9297;
+    --message-text-color: #ffffff;
+    --timestamp-color: #b9bbbe;
 }
 
 html, body, #container {
@@ -21,121 +20,190 @@ html, body, #container {
     height: 100%;
     background-color: var(--bg-color);
     display: flex;
+    font-family: Arial, sans-serif;
 }
 
-#side-nav {
-    width: 20%;
-    background-color: #2a2a2a;
+/* Sidebar for servers and  */
+#server-nav {
+    background-color: #202225;
     color: var(--text-color);
     padding: 10px;
     display: flex;
     flex-direction: column;
 }
 
+.server-icon {
+    width: 4rem;
+    height: 4rem;
+    background-color: #444;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin: 0.8rem; 
+}
+
+.server-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.server-icon:hover {
+    transform: scale(1.1);
+}
+
+.channel-item {
+    padding: 10px;
+    background-color: var(--channel-bg-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.channel-item:hover {
+    background-color: var(--channel-hover-color);
+}
+
+.title-container {
+    width: 100%;
+    background-color: #2f2f2f;
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Main messaging area */
 #msg-container {
+    flex: 1;
     width: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: 10px;
+    background-color: #36393f;
+    overflow: hidden;
 }
 
 #messages {
     flex: 1;
     overflow-y: auto;
-    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+    padding: 10px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
 }
 
 .message {
-    position: relative;
     display: flex;
-    flex-direction: column;
-    max-width: 60%;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-.message.sent {
-    align-self: flex-end;
-}
-
-.message.received {
-    align-self: flex-start;
+.profile-picture {
+    width: var(--profile-picture-size);
+    height: var(--profile-picture-size);
+    border-radius: 50%;
+    background-color: #72767d;
+    object-fit: cover;
 }
 
 .message-bubble {
+    background-color: var(--channel-bg-color);
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 10px;
+    max-width: 60%;
+    color: var(--message-text-color);
     word-wrap: break-word;
-    position: relative;
-    display: inline-block;
 }
 
-/* Border radius adjustments for sent messages */
-.message.sent .top {
-    border-top-right-radius: 5px;
+.username {
+    color: var(--username-color);
+    font-weight: bold;
+    font-size: 0.9em;
 }
 
-.message.sent .bottom {
-    border-bottom-right-radius: 5px;
-}
-
-/* Border radius adjustments for received messages */
-.message.received .top {
-    border-top-left-radius: 5px;
-}
-
-.message.received .bottom {
-    border-bottom-left-radius: 5px;
-}
-
-.sent .message-bubble {
-    background-color: var(--sent-bg-color);
-    color: var(--sent-text-color);
-}
-
-.received .message-bubble {
-    background-color: var(--received-bg-color);
-    color: var(--received-text-color);
-}
-
-/* Timestamp styling and alignment */
 .timestamp {
-    font-size: 0.8em;
-    color: inherit;
-    margin-top: 5px;
-    margin-left: 10px;
-    display: none; /* Initially hidden, shown on hover */
+    color: var(--timestamp-color);
+    font-size: 0.75em;
+    margin-left: 5px;
 }
 
-.message-bubble:hover .timestamp {
-    display: inline-block;
-}
-
-/* Input field styling */
+/* Input field and send button */
 #message-field {
     display: flex;
     gap: 10px;
     margin-top: 10px;
+    padding: 10px;
+    background-color: #40444b;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
 }
 
 #message-input {
     flex: 1;
-    padding: 15px;
+    padding: 10px;
     border-radius: 5px;
     border: none;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
 }
 
 #send-btn {
-    padding: 15px;
+    padding: 10px;
     border: none;
-    background-color: var(--sent-bg-color);
-    color: var(--sent-text-color);
+    background-color: var(--send-btn-color);
+    color: #ffffff;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 #send-btn:hover {
-    background-color: #805a07;
+    background-color: #4e5bdb;
+}
+
+
+/*  */
+
+.message-image{
+    max-width: 60rem;
+    min-width: 5rem;
+}
+
+#image-chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.image-chip {
+    display: flex;
+    align-items: center;
+    background-color: #4e5bdb;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.image-chip .close-btn {
+    margin-left: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.image-chip .close-btn:hover {
+    color: #ff5c5c;
 }
